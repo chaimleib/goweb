@@ -1,0 +1,11 @@
+{
+  "template": "hero",
+  "fields": {
+    "title": "Hello world",
+    "content": "![Geek face][geek-face] Hello world!\n\nThis is a sample page!"
+  },
+  "img": {
+    "geek-face": "/img/geek.png"
+  }
+}
+
