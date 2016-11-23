@@ -21,7 +21,7 @@ func check(e error) {
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
   // p := r.URL.Path
-  tmplData, err := component.LoadPage("../go-templates/root")
+  tmplData, err := component.LoadPage("../go-templates", "root")
   check(err)
   tmpl, err := template.New("root").Parse(tmplData.Body)
   check(err)

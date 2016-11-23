@@ -5,6 +5,7 @@ import (
 )
 
 type Page struct {
+  Dir string
   Slug string
   Body string
 }
@@ -12,16 +13,16 @@ type Page struct {
 const dtype = "html"
 
 func (p *Page) Save() error {
-  filename := p.Slug + "." + "html"
+  filename := p.Dir + "/" + p.Slug + "." + dtype
   return ioutil.WriteFile(filename, []byte(p.Body), 0600)
 }
 
-func LoadPage(slug string) (*Page, error) {
-  filename := slug + "." + "html"
+func LoadPage(dir string, slug string) (*Page, error) {
+  filename := dir + "/" + slug + "." + dtype
   bodyBytes, err := ioutil.ReadFile(filename)
   if err != nil {
     return nil, err
   }
   body := string(bodyBytes)
-  return &Page{Slug: slug, Body: body}, nil
+  return &Page{Dir: dir, Slug: slug, Body: body}, nil
 }
