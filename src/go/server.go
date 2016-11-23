@@ -1,10 +1,9 @@
 package main
 
 import (
-  "os"
   "net/http"
   "html/template"
-  "components"
+  "component"
 )
 
 type Root struct {
@@ -14,19 +13,24 @@ type Root struct {
   Footer string
 }
 
+func check(e error) {
+  if e != nil {
+    panic(e)
+  }
+}
+
 func viewHandler(w http.ResponseWriter, r *http.Request) {
-  p := r.URL.Path
-  tmplData, err := loadPage("../go-templates/root.html")
-  if (err != nil) { panic(err) }
+  // p := r.URL.Path
+  tmplData, err := component.LoadPage("../go-templates/root")
+  check(err)
   tmpl, err := template.New("root").Parse(tmplData.Body)
-  if (err != nil) { panic(err) }
-  pageData := Root{tmplData.Slug, "Header<br/>", "Hi there!", "Footer"}
-  err = tmpl.Execute(os.Stdout, pageData)
-  if (err != nil) { panic(err) }
+  check(err)
+  pageData := Root{tmplData.Slug, "Header", "Hi there!", "Footer"}
+  err = tmpl.Execute(w, pageData)
+  check(err)
 }
 
 func main() {
   http.HandleFunc("/", viewHandler)
   http.ListenAndServe(":8080", nil)
 }
-

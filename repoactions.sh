@@ -5,6 +5,4 @@
 # https://github.com/chaimleib/repoactions
 
 gitroot="$(git rev-parse --show-toplevel)"
-export GOPATH="$gitroot"
-
-
+export GOPATH="${gitroot}/src/go"
