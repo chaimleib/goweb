@@ -20,28 +20,22 @@ This is a hello world for a go-based web server. To set things up:
 
 4. Follow the instructions repoactions gives to add goweb to the repoactions whitelist. This will set up your GOPATH and any other needed environment variables for you whenever you cd into the goweb repo.
 
-5. Navigate into the go sources:
-
-  ```bash
-  cd src/go
-  ```
-
-6. Compile the server:
-
-  ```bash
-  make
-  ```
-
-7. Run the tests:
+5. Run the tests:
 
   ```bash
   make test
   ```
 
-8. Run the server:
+6. Compile the server. This compiles the code from `src/server/cli/server/main.go` and puts the binary in `bin/server`.
 
   ```bash
-  ./server
+  make
   ```
 
-9. Navigate to [http://localhost:8080/]() to see the hello world!
+7. Run the server. Thanks to repoactions, the `bin` folder is now in your PATH, so you can just type this:
+
+  ```bash
+  server
+  ```
+
+8. Navigate to [http://localhost:8080/]() to see the hello world!

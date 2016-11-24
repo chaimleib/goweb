@@ -1,6 +1,7 @@
 .DS_Store
 *.swp
+bin/*
+pkg/*
 testdata/
-src/go/server
 vendor/*/
-
+src/github.com/

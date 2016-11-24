@@ -3,6 +3,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{{if .Title}}{{.Title}}{{else}}Go Hello{{end}}</title>
+  {{range $_, $css := .CSS}}
+    <link rel="stylesheet" type="text/css" href="/css/{{$css}}.css" />
+  {{end}}
   </head>
   <body>
     {{.Header}}
