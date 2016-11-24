@@ -5,7 +5,7 @@
 # https://github.com/chaimleib/repoactions
 
 gitroot="$(git rev-parse --show-toplevel)"
-BASH_LIBS="${gitroot}/bash" source bash/pathfuncs.sh
+BASH_LIBS="${gitroot}/bash" source "${gitroot}/bash/pathfuncs.sh"
 
 # import path for golang
 #prependPath "${gitroot}/src/go" GOPATH
@@ -14,3 +14,4 @@ export GOPATH="${gitroot}/src/go"
 
 # put our golang tools in our PATH
 prependPath "${GOPATH}/bin"
+
