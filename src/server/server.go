@@ -19,7 +19,7 @@ func check(e error) {
   }
 }
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
+func testHandler(w http.ResponseWriter, r *http.Request) {
   // p := r.URL.Path
   css := []string{"test"}
   pageData := Context{
@@ -29,12 +29,12 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     Footer: "Footer",
     CSS: css,
   }
-  t, err := getTemplate("root")
+  t, err := templates.Get("root")
   check(err)
   handler.HTML(w, t, pageData)
 }
 
 func Start(port string) {
-  http.HandleFunc("/", rootHandler)
+  http.HandleFunc("/", testHandler)
   http.ListenAndServe(":" + port, nil)
 }
